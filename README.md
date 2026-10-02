@@ -56,7 +56,7 @@
 
 설정 화면
 
-<img src="docs/settings.png" width="280" alt="설정 화면" />
+<img src="docs/mac-settings.png" width="320" alt="설정 화면 (macOS)" />
 
 Windows에서 실행한 모습
 
