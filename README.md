@@ -2,7 +2,7 @@
 
 > 하루 중 꼭 집중해야 하는 시간을 정해 두고, 그 시간을 지킬 수 있게 도와주는 데스크톱 위젯입니다.
 
-<img src="docs/widget-mac.png" width="420" alt="macOS에서 실행 중인 코어타이머" />
+<img src="docs/mac-menu.png" width="560" alt="macOS 위젯과 메뉴 막대 메뉴" />
 
 **[⬇️ 최신 버전 내려받기 (Releases)](https://github.com/darams4863/core-timer/releases/latest)** · macOS · Windows
 
@@ -25,7 +25,7 @@
 - 시차출퇴근제·유연근무제에서 코어타임을 지켜야 하는 분
 - 오전·오후에 각각 "방해받지 않는 집중 시간"을 정해 두고 싶은 분
 - 퇴근 가능 시각을 매번 계산하기 귀찮은 분
-- 시간을 자꾸 까먹는 분 (저요)
+- 시간을 자꾸 까먹는 분 (저요 🙌)
 
 ### 만든 계기
 
@@ -47,11 +47,16 @@
 | 📍 메뉴 막대 / 트레이 | Mac은 남은 시간을 글자로, Windows는 아이콘 안 숫자로 표시 |
 | 👀 미리보기 | 설정에서 시작 · 종료 · 잠금 확인 · **하루 빠르게**(07:50→19:00을 약 40초에) |
 
+코어타임이 시작될 때와 끝날 때 (macOS)
+
 <p>
-  <img src="docs/alerts.png" width="280" alt="알림 카드" />
-  &nbsp;
-  <img src="docs/settings.png" width="280" alt="설정 화면" />
+  <img src="docs/mac-start.png" width="420" alt="코어타임 시작 알림" />
+  <img src="docs/mac-end.png" width="420" alt="코어타임 종료 알림과 컨페티" />
 </p>
+
+설정 화면
+
+<img src="docs/settings.png" width="280" alt="설정 화면" />
 
 Windows에서 실행한 모습
 
@@ -121,5 +126,5 @@ pnpm tauri build   # 현재 OS용 설치 파일
 
 ## 참고
 
-- 근태 시스템과 연동되지 않는 독립 도구입니다. 실제 출퇴근 기록은 각자 사용하는 근태 시스템 기준으로 확인해 주세요.
+- macOS와 Windows는 UI에 미세한 차이가 있지만 기능은 동일합니다.
 - 버그나 아이디어는 [Issues](https://github.com/darams4863/core-timer/issues)에 남겨 주세요.
