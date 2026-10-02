@@ -1,0 +1,4 @@
+allowBuilds:
+  esbuild: false
+# 갓 배포된 패키지는 피하기 (pnpm 11+ 공급망 정책과 맞춤)
+minimumReleaseAge: 4320

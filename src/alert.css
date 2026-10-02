@@ -1,0 +1,131 @@
+/* 모든 알림(확인 · 출근 · 시작 · 종료 축하)이 쓰는 공통 글래스 카드 */
+html, body {
+  margin: 0;
+  background: transparent;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: "Pretendard", "SF Pro Display", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1d2550;
+}
+body { padding: 14px 18px 24px; }
+
+.card {
+  width: 384px;
+  padding: 16px 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background:
+    radial-gradient(140% 120% at 0% 0%, rgba(255, 255, 255, 0.75), transparent 60%),
+    linear-gradient(135deg, rgba(196, 167, 255, 0.38), rgba(124, 196, 255, 0.3)),
+    rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(22px) saturate(1.4);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  box-shadow: 0 16px 40px -18px rgba(109, 124, 255, 0.6), inset 0 1px 0 #fff;
+  transform: translateY(-14px) scale(0.96);
+  opacity: 0;
+  animation: cardIn 0.55s cubic-bezier(0.34, 1.6, 0.5, 1) 0.05s forwards;
+}
+.card.out { animation: cardOut 0.4s ease-in forwards; }
+@keyframes cardIn { to { transform: none; opacity: 1; } }
+@keyframes cardOut { from { transform: none; opacity: 1; } to { transform: translateY(-12px) scale(0.97); opacity: 0; } }
+.warn .card { border-color: rgba(245, 158, 11, 0.7); }
+
+.head { display: flex; gap: 14px; align-items: center; }
+.icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 17px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.4)), rgba(164, 180, 255, 0.35);
+  box-shadow: 0 8px 18px -8px rgba(109, 124, 255, 0.7), inset 0 1px 0 #fff;
+}
+.icon svg { overflow: visible; display: block; }
+.shackle { transform-box: view-box; transform-origin: 32px 21px; }
+.anim-unlock .shackle { animation: unlock 0.9s cubic-bezier(0.34, 1.8, 0.5, 1) 0.4s forwards; }
+@keyframes unlock { 45% { transform: translateY(-10px) rotate(-26deg); } 100% { transform: translateY(-5px) rotate(-16deg); } }
+.anim-lock .shackle { transform: translateY(-5px) rotate(-16deg); animation: lockClose 0.7s cubic-bezier(0.5, 0, 0.3, 1.4) 0.4s forwards; }
+@keyframes lockClose { 70% { transform: translateY(1px) rotate(0); } 100% { transform: none; } }
+.anim-lock .icon { animation: thunk 0.35s ease-out 0.95s; }
+@keyframes thunk { 40% { transform: scale(0.92); } }
+
+.texts { min-width: 0; }
+h1 { margin: 0 0 3px; font-size: 19px; font-weight: 800; letter-spacing: -0.5px; }
+p { margin: 0; font-size: 12.5px; line-height: 1.45; font-weight: 550; color: rgba(29, 37, 80, 0.68); }
+
+.buttons { display: flex; gap: 7px; justify-content: flex-end; margin-top: 12px; }
+.buttons:empty { display: none; }
+button {
+  padding: 7px 16px;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 650;
+  color: #1d2550;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)) padding-box,
+    linear-gradient(160deg, #fff, rgba(196, 167, 255, 0.45) 55%, rgba(124, 196, 255, 0.55)) border-box;
+  box-shadow: 0 6px 16px -10px rgba(109, 124, 255, 0.55), inset 0 1px 0 #fff;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+button:active { transform: scale(0.96); }
+button.primary {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(60, 40, 140, 0.35);
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(255, 255, 255, 0.65), transparent 45%) padding-box,
+    linear-gradient(120deg, #8fd0ff, #9b8bff 45%, #e7a6ff) padding-box,
+    linear-gradient(160deg, #fff, rgba(255, 255, 255, 0.3)) border-box;
+  box-shadow: 0 8px 22px -8px rgba(139, 109, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+button.danger {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(140, 30, 60, 0.35);
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(255, 255, 255, 0.6), transparent 45%) padding-box,
+    linear-gradient(120deg, #ffb3c7, #ff7a9c) padding-box,
+    linear-gradient(160deg, #fff, rgba(255, 255, 255, 0.3)) border-box;
+}
+
+/* ── 크기 통일: 모든 알림 카드를 같은 너비·높이로 ── */
+*, *::before, *::after { box-sizing: border-box; }
+body { width: 420px; padding: 14px 18px 24px; }
+.card {
+  width: 100%;
+  height: 146px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card .buttons { margin-top: auto; }
+.card:has(.buttons:not(:empty)) { justify-content: flex-start; }
+.texts p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ── 위젯과 같은 크기 (280 × 94) ── */
+body { width: 280px; height: 94px; padding: 0; }
+.card {
+  width: 280px;
+  height: 94px;
+  padding: 9px 12px;
+  border-radius: 16px;
+  justify-content: center;
+  gap: 0;
+  box-shadow: inset 0 1px 0 #fff;
+}
+.head { gap: 10px; align-items: center; }
+.icon { width: 42px; height: 42px; border-radius: 13px; }
+.icon svg { width: 30px; height: 30px; }
+h1 { font-size: 13.5px; letter-spacing: -0.3px; margin: 0 0 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+p { font-size: 10.5px; line-height: 1.35; }
+.texts { flex: 1; }
+.card:has(.buttons:not(:empty)) { justify-content: space-between; }
+.card:has(.buttons:not(:empty)) .head { align-items: flex-start; }
+.card:has(.buttons:not(:empty)) .texts p { -webkit-line-clamp: 1; }
+.buttons { margin-top: 0; gap: 5px; }
+button { padding: 3px 11px; font-size: 11px; }
